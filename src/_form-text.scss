@@ -1,0 +1,241 @@
+/*
+---
+name: Basic state
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/text"
+  - "@gridonic/forms/text/basic"
+sourcePath: "@gridonic/forms/src/_form-text.scss"
+---
+
+A single-line text field. Line-breaks are automatically removed from the input
+value.
+
+```html
+<div class="form-text">
+    <label for="input1" class="form-label label">Label</label>
+    <input type="text" id="input1" class="input" placeholder="Optional field">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="input2" class="form-label label">Label</label>
+    <input type="text" id="input2" class="input" placeholder="Read only field" readonly>
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="input3" class="form-label label">Label</label>
+    <input required type="text" id="input3" class="input" placeholder="Required field" value="Required field&hellip;">
+</div>
+
+<br>
+
+<div class="form-text -error">
+    <label for="email1" class="form-label label">E-Mail</label>
+    <input type="email" id="email1" class="input" placeholder="name@domain.com">
+    <span class="feedback">Please provide a valid e-mail address!</span>
+</div>
+```
+
+*/
+
+/*
+---
+name: Extended types
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/text"
+  - "@gridonic/forms/text/extended"
+sourcePath: "@gridonic/forms/src/_form-text.scss"
+---
+
+HTML5 also introduced a lot new input types for forms. Below is an example list
+of further types. See the [MDN article] about `<input>` for further details.
+
+```html
+<div class="form-text">
+    <label for="date" class="form-label label">Date</label>
+    <input type="date" id="date" class="input" value="2027-06-01" min="2027-04-01" max="2047-04-30">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="datetime-local" class="form-label label">Datetime</label>
+    <input type="datetime-local" id="datetime-local" class="input" value="2017-06-01T08:30">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="email2" class="form-label label">E-Mail</label>
+    <input type="email" id="email2" class="input" placeholder="me@example.org">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="month" class="form-label label">Month</label>
+    <input type="month" id="month" class="input" value="2027-06">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="number" class="form-label label">Number</label>
+    <input type="number" id="number" class="input" placeholder="123">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="password" class="form-label label">Password</label>
+    <input type="password" id="password" class="input" placeholder="Your password&hellip;">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="tel" class="form-label label">Tel</label>
+    <input type="tel" id="tel" class="input" placeholder="+1-541-754-3010">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="time" class="form-label label">Time</label>
+    <input type="time" id="time" class="input" value="08:30">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="url" class="form-label label">URL</label>
+    <input type="url" id="url" class="input" placeholder="https://gridonic.ch">
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="week" class="form-label label">Week</label>
+    <input type="week" id="week" class="input" value="2027-W24">
+</div>
+```
+
+[MDN article]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+
+*/
+
+/*
+---
+name: Data validation
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/text"
+  - "@gridonic/forms/text/validation"
+sourcePath: "@gridonic/forms/src/_form-text.scss"
+---
+
+One of the features of HTML5 is the ability to validate most user data without
+relying on scripts. This is done using [validation attributes] on form
+elements, which allow you to specify rules for a form input like whether a
+value needs to be filled in, the minimum and maximum length of the data,
+whether it needs to be a number, an email address, etc., and a pattern that it
+must match.
+
+If the entered data follows all those rules, it is considered valid; if not,
+it is considered invalid.
+
+For example:
+
+```html
+<div class="form-text">
+    <label for="username" class="form-label label">Username</label>
+    <input type="username" id="username" class="input" pattern="^.{4,}$" placeholder="Must be at least 4 characters long&hellip;">
+</div>
+```
+
+[validation attributes]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+
+*/
+.form-text {
+    > .label {
+        margin: $forms-label-margin;
+    }
+
+    > .input {
+        border-radius: 2px;
+        border: 1px solid rgba($forms-text-color, 0.25);
+        box-shadow: none;
+        color: $forms-text-color;
+        display: block;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        outline: 0;
+        padding: $forms-text-padding;
+        resize: none;
+        width: 100%;
+
+        &::placeholder {
+            color: rgba($forms-text-color, 0.25);
+        }
+
+        &:focus {
+            border-color: $forms-color-focus;
+        }
+
+        &:required {
+            background-image: radial-gradient($forms-color-focus 50%, transparent 60%);
+            background-size: 0.5em 0.5em;
+            background-repeat: no-repeat;
+            background-position: center right 0.5em;
+            padding-right: 1.5em;
+        }
+
+        &:invalid {
+            border-color: $forms-color-error;
+        }
+
+        // @see https://stackoverflow.com/a/7730719/4628548
+        &:read-only,
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        // Browser specific adjustments…
+        &::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        &::-webkit-datetime-edit-fields-wrapper {
+            padding: 0;
+        }
+    }
+
+    > .feedback {
+        display: none;
+        margin-top: 0.25em;
+    }
+
+    &.-error {
+        > .input {
+            border-color: $forms-color-error;
+        }
+
+        > .feedback {
+            display: block;
+            color: $forms-color-error;
+        }
+    }
+}
