@@ -1,0 +1,28 @@
+{
+  "name": "@gridonic/forms",
+  "version": "1.0.0",
+  "description": "Forms, forms, forms.",
+  "main": "src/forms.scss",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gridonic/forms.git"
+  },
+  "keywords": [
+    "forms",
+    "library",
+    "input",
+    "text",
+    "textarea",
+    "date",
+    "range",
+    "radio",
+    "checkbox"
+  ],
+  "author": "Gridonic <hello@gridonic.ch>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gridonic/forms/issues"
+  },
+  "homepage": "https://github.com/gridonic/forms#readme"
+}
