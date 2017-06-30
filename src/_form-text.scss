@@ -173,8 +173,9 @@ For example:
     }
 
     > .input {
-        border-radius: 2px;
-        border: 1px solid rgba($forms-text-color, 0.25);
+        background-color: $forms-color-background;
+        border: 1px solid $forms-color-border;
+        border-radius: $forms-border-radius;
         box-shadow: none;
         color: $forms-text-color;
         display: block;
