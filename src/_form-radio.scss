@@ -1,0 +1,62 @@
+/*
+---
+name: Radio
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/radio"
+sourcePath: "@gridonic/forms/src/_form-radio.scss"
+---
+
+Radio buttons are rendered by default as circles that are checked (ticked) when
+activated.
+
+You must use the `value` attribute to define the value submitted by this item.
+Use the `checked` attribute to indicate whether this item is selected by
+default.
+
+Radio buttons that have the *same* value for the `name` attribute are in the
+*same* “radio button group”. Only *one* radio button in a group can be selected
+*at a time*.
+
+```html
+<label class="form-radio">
+    <input type="radio" class="input" name="drink" value="mojito">
+    <span class="form-label label">Mojito</span>
+</label>
+
+<br>
+
+<label class="form-radio">
+    <input type="radio" class="input" name="drink" value="long-island-iced-tea" checked>
+    <span class="form-label label">Long Island Iced Tea</span>
+</label>
+
+<br>
+
+<label class="form-radio">
+    <input type="radio" class="input" name="drink" value="cosmopolitan">
+    <span class="form-label label">Cosmopolitan</span>
+</label>
+
+<br>
+
+<label class="form-radio">
+    <input type="radio" class="input" name="drink" value="margarita">
+    <span class="form-label label">Margarita</span>
+</label>
+```
+
+*/
+.form-radio {
+    @extend .form-checkbox;
+
+    > .input:checked + .label:before {
+        background-image: radial-gradient($forms-color-focus 60%, transparent 65%);
+    }
+
+    > .label::before {
+        border-radius: 50%;
+    }
+}
