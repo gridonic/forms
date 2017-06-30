@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/gridonic/forms/issues"
   },
-  "homepage": "https://github.com/gridonic/forms#readme"
+  "homepage": "https://github.com/gridonic/forms#readme",
+  "dependencies": {
+    "sass-svg-uri": "^1.0.0"
+  }
 }
