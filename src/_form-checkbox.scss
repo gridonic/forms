@@ -1,0 +1,90 @@
+/*
+---
+name: Checkbox
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/checkbox"
+sourcePath: "@gridonic/forms/src/_form-checkbox.scss"
+---
+
+Checkboxes are rendered by default as square boxes that are checked (ticked)
+when activated, like you might see in an official government paper form. They
+allow you to select single values for submission in a form (or not).
+
+You must use the `value` attribute to define the value submitted by this item.
+Use the `checked` attribute to indicate whether this item is selected.
+
+```html
+<label class="form-checkbox">
+    <input type="checkbox" class="input" name="coding" value="coding">
+    <span class="form-label label">Coding</span>
+</label>
+
+<br>
+
+<label class="form-checkbox">
+    <input type="checkbox" class="input" name="music" value="music" checked>
+    <span class="form-label label">Music</span>
+</label>
+
+<br>
+
+<label class="form-checkbox">
+    <input type="checkbox" class="input" name="dancing" value="dancing">
+    <span class="form-label label">Dancing</span>
+</label>
+
+<br>
+
+<label class="form-checkbox">
+    <input type="checkbox" class="input" name="hiking" value="hiking" checked>
+    <span class="form-label label">Hiking</span>
+</label>
+```
+
+*/
+.form-checkbox {
+    display: inline-block;
+    position: relative;
+    user-select: none;
+
+    > .input {
+        cursor: pointer;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        &:focus + .label::before {
+            border-color: $forms-color-focus;
+        }
+
+        &:checked + .label::before {
+            background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 533.333 533.334"><path fill="#{$forms-color-focus}" d="M450 58.333l-250 250L83.333 191.667 0 275l200 200 333.333-333.333L450 58.333z"/></svg>');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 75%;
+        }
+    }
+
+    > .label {
+        align-items: center;
+        display: flex;
+
+        &::before {
+            background-color: $forms-color-background;
+            border: 1px solid $forms-color-border;
+            border-radius: $forms-border-radius;
+            content: "";
+            display: block;
+            height: 1.5em;
+            margin-right: 0.625em;
+            min-width: 1.5em;
+            width: 1.5em;
+        }
+    }
+}
