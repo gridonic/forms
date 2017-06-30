@@ -13,14 +13,9 @@ information to a web server.
 
 */
 
-$forms-color-default: #000 !default;
-$forms-color-error: #e80505 !default;
-$forms-color-focus: #0396ff !default;
+// @see https://github.com/waldemarfm/sass-svg-uri
+@import "~sass-svg-uri";
 
-$forms-label-margin: 0 0 0.25em !default;
-
-$forms-text-padding: 0.5em !default;
-$forms-text-color: $forms-color-default !default;
-
-@import "form-text";
+@import "variables";
 @import "form-label";
+@import "form-text";
