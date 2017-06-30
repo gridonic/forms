@@ -43,14 +43,8 @@ Represents a control that provides a menu of options.
     padding-right: 2em;
     width: 100%;
 
-    &:not(:disabled) {
-        &:focus {
-            border-color: $forms-color-focus;
-        }
-
-        &:active {
-            background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12"><path fill="none" stroke="#{$forms-color-border}" stroke-width="1.5" d="M21 11L11 1M1 11L11 1" stroke-linecap="round"/></svg>');
-        }
+    &:focus {
+        border-color: $forms-color-focus;
     }
 
     &:disabled {
