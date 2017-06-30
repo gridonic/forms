@@ -1,0 +1,26 @@
+/*
+---
+name: Forms
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+sourcePath: "@gridonic/forms/src/forms.scss"
+---
+
+This collection of elements represents interactive controls to submit
+information to a web server.
+
+*/
+
+$forms-color-default: #000 !default;
+$forms-color-error: #e80505 !default;
+$forms-color-focus: #0396ff !default;
+
+$forms-label-margin: 0 0 0.25em !default;
+
+$forms-text-padding: 0.5em !default;
+$forms-text-color: $forms-color-default !default;
+
+@import "form-text";
+@import "form-label";
