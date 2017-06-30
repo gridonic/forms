@@ -10,3 +10,32 @@ $forms-border-radius: 2px;
 $forms-label-margin: 0 0 0.25em !default;
 $forms-text-padding: 0.5em !default;
 $forms-text-color: $forms-color-default !default;
+
+/*
+---
+name: Forms
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+sourcePath: "@gridonic/forms/src/forms.scss"
+---
+
+The elements documented below represent a collection of interactive controls
+for submitting information to a web server.
+
+You may use the following variables to adjust their appearance:
+
+```yaml
+$forms-color-default: #{$forms-color-default}
+$forms-color-error: #{$forms-color-error}
+$forms-color-focus: #{$forms-color-focus}
+$forms-color-border: #{$forms-color-border}
+$forms-color-background: #{$forms-color-background}
+$forms-border-radius: #{$forms-border-radius}
+$forms-label-margin: #{$forms-label-margin}
+$forms-text-padding: #{$forms-text-padding}
+$forms-text-color: #{$forms-text-color}
+```
+
+*/
