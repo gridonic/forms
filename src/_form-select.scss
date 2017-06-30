@@ -45,6 +45,11 @@ Represents a control that provides a menu of options.
 
     &:focus {
         border-color: $forms-color-focus;
+
+        &:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 $forms-text-color;
+        }
     }
 
     &:disabled {
