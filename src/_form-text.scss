@@ -56,80 +56,154 @@ category:
 sourcePath: "@gridonic/forms/src/_form-text.scss"
 ---
 
-HTML5 also introduced a lot new input types for forms. Below is an example list
-of further types. See the [MDN article] about `<input>` for further details.
+### Date
+
+Elements of type [date] create input fields allowing a date to be easily
+entered — this includes year, month and day, but not time.
 
 ```html
 <div class="form-text">
     <label for="date" class="form-label label">Date</label>
     <input type="date" id="date" class="input" value="2027-06-01" min="2027-04-01" max="2047-04-30">
 </div>
+```
 
-<br>
+### Datetime Local
 
+Elements of type [datetime-local] create input fields allowing a date and time
+to be easily entered — this includes year, month, day, hours, and minutes.
+
+```html
 <div class="form-text">
     <label for="datetime-local" class="form-label label">Datetime</label>
     <input type="datetime-local" id="datetime-local" class="input" value="2017-06-01T08:30">
 </div>
+```
 
-<br>
+### E-Mail
 
+Elements of type [email] are used to let the user enter and edit an email
+address, or, if the multiple attribute is specified, a list of email addresses.
+The input value is automatically validated to ensure that it’s either empty or
+a properly-formatted email address (or list of addresses) before the form can
+be submitted.
+
+⚠️ Browsers that don’t support type `email` fall back to being a standard
+`text` input.
+
+```html
 <div class="form-text">
     <label for="email2" class="form-label label">E-Mail</label>
     <input type="email" id="email2" class="input" placeholder="me@example.org">
 </div>
+```
 
-<br>
+### Month
 
+Elements of type [month] create input fields allowing a date to be easily
+entered — this includes just year and month.
+
+```html
 <div class="form-text">
     <label for="month" class="form-label label">Month</label>
     <input type="month" id="month" class="input" value="2027-06">
 </div>
+```
 
-<br>
+### Number
 
+Elements of type [number] are used to let the user enter a number. They include
+built-in validation to reject non-numerical entries. The browser may opt to
+provide stepper arrows to let the user increase and decrease the value using
+their mouse or by simply tapping with a fingertip.
+
+⚠️ Browsers that don’t support type `number` fall back to being a standard
+`text` input.
+
+```html
 <div class="form-text">
     <label for="number" class="form-label label">Number</label>
     <input type="number" id="number" class="input" placeholder="123">
 </div>
+```
 
-<br>
+### Password
 
+Elements of type [password] provide a way for the user to securely enter a
+password. The element is presented as a one-line plain text editor control in
+which the text is obscured so that it cannot be read, usually by replacing each
+character with a symbol such as the asterisk (`*`) or a dot (`•`). This
+character will vary depending on the user agent and OS.
+
+```html
 <div class="form-text">
     <label for="password" class="form-label label">Password</label>
     <input type="password" id="password" class="input" placeholder="Your password&hellip;">
 </div>
+```
 
-<br>
+### Tel
 
+Elements of type [tel] provide a way for the user to enter a telephone number.
+Line-breaks are automatically removed from the input value, but no other syntax
+is enforced. You can use attributes such as `pattern` and `maxlength` to
+restrict values entered in the control.
+
+```html
 <div class="form-text">
     <label for="tel" class="form-label label">Tel</label>
     <input type="tel" id="tel" class="input" placeholder="+1-541-754-3010">
 </div>
+```
 
-<br>
+### Time
 
+Elements of type [time] create input fields allowing a time value to be easily
+entered.
+
+```html
 <div class="form-text">
     <label for="time" class="form-label label">Time</label>
     <input type="time" id="time" class="input" value="08:30">
 </div>
+```
 
-<br>
+### URL
 
+Elements of type [url] provide a way for editing an URL. The input value is
+validated to contain either the empty string or a valid absolute URL before
+submitting. You can use attributes such as `pattern` and `maxlength` to restrict 
+values entered in the control.
+
+```html
 <div class="form-text">
     <label for="url" class="form-label label">URL</label>
     <input type="url" id="url" class="input" placeholder="https://gridonic.ch">
 </div>
+```
 
-<br>
+### Week
 
+Elements of type [week] create input fields allowing a date to be easily
+entered — this includes just year and week.
+
+```html
 <div class="form-text">
     <label for="week" class="form-label label">Week</label>
     <input type="week" id="week" class="input" value="2027-W24">
 </div>
 ```
 
-[MDN article]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+[date]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
+[datetime-local]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local
+[email]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
+[month]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month
+[number]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
+[password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
+[tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel
+[time]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time
+[url]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url
+[week]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week
 
 */
 
