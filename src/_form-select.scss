@@ -39,8 +39,8 @@ Represents a control that provides a menu of options.
     font-size: inherit;
     line-height: inherit;
     outline: 0;
-    padding-right: 1em;
     padding: $forms-text-padding;
+    padding-right: 2em;
     width: 100%;
 
     &:not(:disabled) {
