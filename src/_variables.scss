@@ -11,6 +11,9 @@ $forms-label-margin: 0 0 0.25em !default;
 $forms-text-padding: 0.5em !default;
 $forms-text-color: $forms-color-default !default;
 
+// Technical
+$forms-use-visual-validation: true !default;
+
 /*
 ---
 name: Forms
@@ -24,7 +27,23 @@ sourcePath: "@gridonic/forms/src/forms.scss"
 The elements documented below represent a collection of interactive controls
 for submitting information to a web server.
 
-You may use the following variables to adjust their appearance:
+### Technical customization
+
+`$forms-use-visual-validation` (default: `true`)
+
+By default form elements that *do not* validate their requirements (mandatory
+fields, patterns, etc.) are visually highlighted. This is achieved by
+pseudo-classes like `:invalid` or `:required`. Those states are matched
+*immediately* after the page has been loaded and this might not always be the
+desired behaviour.
+
+Disable it if you wish to manually handle visual feedback. See
+[data validation](./text/validation) for further details.
+
+### Visual customization
+
+You may use the variables below to adjust the general appearance of all form
+components.
 
 ```yaml
 $forms-color-default: #{$forms-color-default}
