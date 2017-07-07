@@ -29,16 +29,32 @@ value.
 <br>
 
 <div class="form-text">
-    <label for="input3" class="form-label label">Label</label>
-    <input required type="text" id="input3" class="input" placeholder="Required field" value="Required field&hellip;">
+    <label for="input3" class="form-label label">
+        <span class="label">What’s your favorite beverage?</span>
+        <span class="hint">Mandatory field, e.g. Coca-Cola.</span>
+    </label>
+    <input required type="text" id="input3" class="input">
 </div>
 
 <br>
 
 <div class="form-text -error">
-    <label for="email1" class="form-label label">E-Mail</label>
-    <input type="email" id="email1" class="input" placeholder="name@domain.com">
+    <label for="email1" class="form-label label">
+        <span class="label">E-Mail</span>
+        <span class="hint">e.g. elon.musk@spacex.com</span>
+    </label>
+    <input type="email" id="email1" class="input">
     <span class="feedback">Please provide a valid e-mail address!</span>
+</div>
+
+<br>
+
+<div class="form-text">
+    <label for="feedback" class="form-label label">
+        <span class="label">Feedback</span>
+        <span class="hint">Is there anything we can improve?</span>
+    </label>
+    <textarea id="feedback" class="input" name="feedback"></textarea>
 </div>
 ```
 
@@ -63,8 +79,13 @@ entered — this includes year, month and day, but not time.
 
 ```html
 <div class="form-text">
-    <label for="date" class="form-label label">Date</label>
-    <input type="date" id="date" class="input" value="2027-06-01" min="2027-04-01" max="2047-04-30">
+    <label for="date1" class="form-label label">Date</label>
+    <input type="date"
+           id="date1"
+           class="input"
+           value="2027-06-01"
+           min="2027-04-01"
+           max="2047-04-30">
 </div>
 ```
 
@@ -75,8 +96,11 @@ to be easily entered — this includes year, month, day, hours, and minutes.
 
 ```html
 <div class="form-text">
-    <label for="datetime-local" class="form-label label">Datetime</label>
-    <input type="datetime-local" id="datetime-local" class="input" value="2017-06-01T08:30">
+    <label for="datetime-local1" class="form-label label">Datetime</label>
+    <input type="datetime-local"
+           id="datetime-local1"
+           class="input"
+           value="2017-06-01T08:30">
 </div>
 ```
 
@@ -105,8 +129,8 @@ entered — this includes just year and month.
 
 ```html
 <div class="form-text">
-    <label for="month" class="form-label label">Month</label>
-    <input type="month" id="month" class="input" value="2027-06">
+    <label for="month1" class="form-label label">Month</label>
+    <input type="month" id="month1" class="input" value="2027-06">
 </div>
 ```
 
@@ -122,8 +146,8 @@ their mouse or by simply tapping with a fingertip.
 
 ```html
 <div class="form-text">
-    <label for="number" class="form-label label">Number</label>
-    <input type="number" id="number" class="input" placeholder="123">
+    <label for="number1" class="form-label label">Number</label>
+    <input type="number" id="number1" class="input" placeholder="123">
 </div>
 ```
 
@@ -137,8 +161,8 @@ character will vary depending on the user agent and OS.
 
 ```html
 <div class="form-text">
-    <label for="password" class="form-label label">Password</label>
-    <input type="password" id="password" class="input" placeholder="Your password&hellip;">
+    <label for="password1" class="form-label label">Password</label>
+    <input type="password" id="password1" class="input" placeholder="Your password&hellip;">
 </div>
 ```
 
@@ -151,8 +175,8 @@ restrict values entered in the control.
 
 ```html
 <div class="form-text">
-    <label for="tel" class="form-label label">Tel</label>
-    <input type="tel" id="tel" class="input" placeholder="+1-541-754-3010">
+    <label for="tel1" class="form-label label">Tel</label>
+    <input type="tel" id="tel1" class="input" placeholder="+1-541-754-3010">
 </div>
 ```
 
@@ -163,8 +187,8 @@ entered.
 
 ```html
 <div class="form-text">
-    <label for="time" class="form-label label">Time</label>
-    <input type="time" id="time" class="input" value="08:30">
+    <label for="time1" class="form-label label">Time</label>
+    <input type="time" id="time1" class="input" value="08:30">
 </div>
 ```
 
@@ -177,8 +201,8 @@ restrict values entered in the control.
 
 ```html
 <div class="form-text">
-    <label for="url" class="form-label label">URL</label>
-    <input type="url" id="url" class="input" placeholder="https://gridonic.ch">
+    <label for="url1" class="form-label label">URL</label>
+    <input type="url" id="url1" class="input" placeholder="https://gridonic.ch">
 </div>
 ```
 
@@ -189,8 +213,8 @@ entered — this includes just year and week.
 
 ```html
 <div class="form-text">
-    <label for="week" class="form-label label">Week</label>
-    <input type="week" id="week" class="input" value="2027-W24">
+    <label for="week1" class="form-label label">Week</label>
+    <input type="week" id="week1" class="input" value="2027-W24">
 </div>
 ```
 
@@ -232,10 +256,17 @@ it is considered invalid.
 For example:
 
 ```html
-<div class="form-text">
-    <label for="username" class="form-label label">Username</label>
-    <input type="username" id="username" class="input" pattern="^.{4,}$" placeholder="Must be at least 4 characters long&hellip;">
-</div>
+<form>
+    <div class="form-text">
+        <label for="username1" class="form-label label">Username</label>
+        <input required
+               type="text"
+               id="username1"
+               class="input"
+               pattern="^.{4,}$"
+               placeholder="Must be at least 4 characters long&hellip;">
+    </div>
+</form>
 ```
 
 ⚠️ If the `novalidate` attribute is set on the `<form>` element, interactive
