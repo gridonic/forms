@@ -258,13 +258,15 @@ For example:
 ```html
 <form>
     <div class="form-text">
-        <label for="username1" class="form-label label">Username</label>
+        <label for="username1" class="form-label label">
+            <span class="label">Username</span>
+            <span class="hint">Must be at least 4 characters long&hellip;</span>
+        </label>
         <input required
                type="text"
                id="username1"
                class="input"
-               pattern="^.{4,}$"
-               placeholder="Must be at least 4 characters long&hellip;">
+               pattern="^.{4,}$">
     </div>
 </form>
 ```
@@ -275,12 +277,14 @@ validation of the constraints doesn't happen.
 ```html
 <form novalidate>
     <div class="form-text">
-        <label for="username2" class="form-label label">Username</label>
+        <label for="username2" class="form-label label">
+            <span class="label">Username</span>
+            <span class="hint">Must be at least 4 characters long&hellip;</span>
+        </label>
         <input type="text"
                id="username2"
                class="input"
-               pattern="^.{4,}$"
-               placeholder="Must be at least 4 characters long&hellip;">
+               pattern="^.{4,}$">
     </div>
 </form>
 ```
@@ -302,6 +306,117 @@ Each validation pseudo-class is also available as a variant class:
 - [Forward Thinking Form Validation](https://alistapart.com/article/forward-thinking-form-validation)
 
 [validation attributes]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+
+*/
+
+/*
+---
+name: Formatting
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/text"
+  - "@gridonic/forms/text/formatting"
+sourcePath: "@gridonic/forms/src/_form-text.scss"
+---
+
+There is a wonderful library called [Cleave.js] which has a simple purpose: to
+help you format input text content automatically.
+
+The idea is to provide an easy way to increase input field readability by
+formatting the typed data. By using this library, you won't need to write any
+mind-blowing regular expressions or mask patterns to format input text.
+
+```html
+<form>
+    <div class="form-text" style="max-width: 35ch;">
+        <label for="productkey1" class="form-label label">
+            <span class="label">Product key</span>
+            <span class="hint">Must be 25 characters long</span>
+        </label>
+        <input type="text"
+               id="productkey1"
+               class="input"
+               data-productkey>
+    </div>
+
+    <br>
+
+    <div class="form-text" style="max-width: 25ch;">
+        <label for="creditcard1" class="form-label label">
+            <span class="label">Credit card number</span>
+            <span class="hint">Try 34…, 300…, 4…, 51… or 65…</span>
+        </label>
+        <input type="text"
+               id="creditcard1"
+               class="input"
+               data-creditcard>
+    </div>
+
+    <br>
+
+    <div class="form-text" style="max-width: 15ch;">
+        <label for="dob1" class="form-label label">
+            <span class="label">Date of birth</span>
+            <span class="hint">YYYY / MM / DD</span>
+        </label>
+        <input type="text"
+               id="dob1"
+               class="input"
+               data-dob>
+    </div>
+</form>
+```
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/0.7.23/cleave.min.js"></script>
+<script>
+    var productkey = new Cleave('[data-productkey]', {
+        blocks: [5, 5, 5, 5, 5],
+        uppercase: true,
+        delimiter: '-'
+    });
+
+    var dob = new Cleave('[data-dob]', {
+        date: true,
+        datePattern: ['Y', 'm', 'd']
+    });
+
+    var creditCard = new Cleave('[data-creditcard]', {
+        creditCard: true,
+        onCreditCardTypeChanged: function(type) {
+            var image;
+
+            switch (type) {
+                case 'amex':
+                    image = 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDk2IDY4Ij48cGF0aCBmaWxsPSIjMkFBMEQwIiBkPSJNNCAwaDg4YzIuMiAwIDQgMS44IDQgNHY2MGMwIDIuMi0xLjggNC00IDRINGMtMi4yIDAtNC0xLjgtNC00VjRjMC0yLjIgMS44LTQgNC00eiIvPjxwYXRoIGZpbGw9IiMyQUEwRDAiIGQ9Ik02NiAyNkg1NGMtLjUgMC0xIC40LTEgLjkgMC0uNS0uNS0uOS0xLS45aC01LjhjLS40IDAtLjguMi0uOS42bC0zLjIgOC00LTguMWMtLjItLjMtLjUtLjYtLjktLjZIMzJjLS42IDAtMSAuNC0xIDF2OS40bC00LjQtOS44Yy0uMi0uNC0uNS0uNi0uOS0uNmgtNS4zYy0uNCAwLS43LjItLjkuNmwtNi45IDE1Yy0uMS4zLS4xLjcuMSAxIC4yLjMuNS41LjguNWg0LjNjLjQgMCAuOC0uMi45LS42bDEuNS0zLjRoNS41bDEuNCAzLjRjLjIuNC41LjYuOS42aDhjLjYgMCAxLS40IDEtMXYtNS43bDIuNSA2LjFjLjIuNC41LjYuOS42aDMuMWMuNCAwIC44LS4yLjktLjZsMi42LTYuMlY0MmMwIC42LjQgMSAxIDFoNGMuNSAwIDEtLjQgMS0uOSAwIC41LjUuOSAxIC45aDEyYy42IDAgMS0uNCAxLTF2LTNjMC0uNi0uNC0xLTEtMWgtN3YtMWg2LjhjLjYgMCAxLS40IDEtMXYtM2MwLS42LS40LTEtMS0xSDU5di0xaDdjLjYgMCAxLS40IDEtMXYtM2MwLS41LS41LTEtMS0xem0tNDMuOSA4bC45LTIgLjkgMmgtMS44ek04Mi43IDM4LjlsLTQtNC4zIDQtNC4zYy4yLS4yLjMtLjQuMy0uN1YyN2MwLS4zLS4xLS41LS4zLS43LS4yLS4yLS40LS4zLS43LS4zaC0yLjdjLS4zIDAtLjYuMS0uOC4zTDc1IDMwLjVsLTMuNi00LjFjLS4yLS4zLS40LS40LS43LS40SDY4Yy0uNiAwLTEgLjQtMSAxdjE1YzAgLjYuNCAxIDEgMWgyLjRjLjMgMCAuNS0uMS43LS4zbDMuOC00IDMuOCA0Yy4yLjIuNS4zLjcuM0g4MmMuMyAwIC41LS4xLjctLjMuMi0uMi4zLS40LjMtLjd2LTIuNGMwLS4zLS4xLS41LS4zLS43ek02OSAzN3YtNC45bDIuMyAyLjRMNjkgMzd6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTIwLjYgMzVoNC44TDIzIDI5LjZ6TTY4IDM5LjZsNC43LTUtNC43LTV6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTgzLjUgMzguMmwtMy40LTMuNiAzLjQtMy42Yy4zLS40LjUtLjkuNS0xLjRWMjdjMC0uNS0uMi0xLS42LTEuNC0uNC0uNC0uOS0uNi0xLjQtLjZoLTIuN2MtLjYgMC0xLjEuMi0xLjUuN0w3NSAyOC45bC0yLjgtMy4yYy0uNC0uNC0uOS0uNy0xLjUtLjdINjhjLS40IDAtLjcuMS0xIC4zLS4zLS4yLS42LS4zLTEtLjNINTRjLS40IDAtLjcuMS0xIC4zLS4zLS4yLS42LS4zLTEtLjNoLTUuOGMtLjggMC0xLjYuNS0xLjkgMS4zbC0yLjQgNi0zLTYuMWMtLjMtLjctMS0xLjEtMS44LTEuMUgzMmMtMS4xIDAtMiAuOS0yIDJ2NC43bC0yLjUtNS41Yy0uMy0uNy0xLTEuMi0xLjgtMS4yaC01LjNjLS44IDAtMS41LjUtMS44IDEuMmwtNi45IDE1Yy0uMy42LS4yIDEuMy4xIDEuOS40LjYgMSAuOSAxLjcuOWg0LjNjLjggMCAxLjUtLjUgMS44LTEuMmwxLjItMi44SDI1bDEuMSAyLjhjLjMuOCAxIDEuMyAxLjkgMS4zaDhjMS4xIDAgMi0uOSAyLTJ2LS43bC42IDEuNWMuMy43IDEgMS4yIDEuOCAxLjJoMy4xYy44IDAgMS41LS41IDEuOS0xLjJsLjYtMS41di41YzAgMS4xLjkgMiAyIDJoNGMuNCAwIC43LS4xIDEtLjMuMy4yLjYuMyAxIC4zaDEyYy40IDAgLjctLjEgMS0uMy4zLjIuNi4zIDEgLjNoMi40Yy41IDAgMS4xLS4yIDEuNS0uNmwzLjEtMy4zIDMuMSAzLjNjLjQuNC45LjYgMS41LjZIODJjLjUgMCAxLS4yIDEuNC0uNnMuNi0uOS42LTEuNHYtMi40YzAtLjUtLjItMS0uNS0xLjR6TTUyIDQyaC00VjMxLjFMNDMuNSA0MmgtMy4xTDM2IDMxLjJWNDJoLThsLTEuNi00aC02LjhsLTEuNyA0aC00LjNsNi45LTE1aDUuM2w2LjMgMTRWMjdoNS4xbDUgMTAuMSA0LTEwLjFINTJ2MTV6bTE0LTEyaC04djNoNy44djNINTh2M2g4djNINTRWMjdoMTJ2M3ptMTMuNiAxMkw3NSAzNy4yIDcwLjQgNDJINjhWMjdoMi43bDQuMyA1IDQuMy01SDgydjIuNmwtNC43IDUgNC43IDVWNDJoLTIuNHoiLz48cGF0aCBvcGFjaXR5PSIuMDUiIGZpbGw9IiNGRkYiIGQ9Ik00IDY4aDEuOEw5NiA1LjhWNGMwLTIuMi0xLjgtNC00LTRINEMxLjggMCAwIDEuOCAwIDR2NjBjMCAyLjIgMS44IDQgNCA0eiIvPjwvc3ZnPgo=';
+                    break;
+                case 'mastercard':
+                    image = 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDk2IDY4Ij48cGF0aCBmaWxsPSIjNDM2MUMzIiBkPSJNNCAwaDg4YzIuMiAwIDQgMS44IDQgNHY2MGMwIDIuMi0xLjggNC00IDRINGMtMi4yIDAtNC0xLjgtNC00VjRjMC0yLjIgMS44LTQgNC00eiIvPjxwYXRoIGZpbGw9IiNGRkFGMzgiIGQ9Ik01OS41IDIwYzggMCAxNC41IDYuNSAxNC41IDE0LjVTNjcuNSA0OSA1OS41IDQ5IDQ1IDQyLjUgNDUgMzQuNSA1MS41IDIwIDU5LjUgMjB6Ii8+PHBhdGggZmlsbD0iI0ZGQUYzOCIgZD0iTTQ3IDI3aDEwdjJINDd6Ii8+PHBhdGggZmlsbD0iI0VCMzYzNiIgZD0iTTM2LjUgNDljLTggMC0xNC41LTYuNS0xNC41LTE0LjVTMjguNSAyMCAzNi41IDIwIDUxIDI2LjUgNTEgMzQuNSA0NC41IDQ5IDM2LjUgNDl6Ii8+PHBhdGggZmlsbD0iI0ZGQUYzOCIgZD0iTTQ3IDQxdi0yaDEzdjJINDd6bTAtMTRoMTN2Mkg0N3YtMnptMTIgNkg0NnYtMmgxM3Yyem0wIDRINDZ2LTJoMTN2MnoiLz48cGF0aCBvcGFjaXR5PSIuMDUiIGZpbGw9IiNGRkYiIGQ9Ik00IDY4aDEuOEw5NiA1LjhWNGMwLTIuMi0xLjgtNC00LTRINEMxLjggMCAwIDEuOCAwIDR2NjBjMCAyLjIgMS44IDQgNCA0eiIvPjwvc3ZnPgo=';
+                    break;
+                case 'visa':
+                    image = 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDk2IDY4Ij48cGF0aCBmaWxsPSIjRjlGOUY5IiBkPSJNMCAxOGg5NnYzMkgweiIvPjxwYXRoIGZpbGw9IiMwOTU5OUUiIGQ9Ik00IDBoODhjMi4yIDAgNCAxLjggNCA0djE0SDBWNGMwLTIuMiAxLjgtNCA0LTR6Ii8+PHBhdGggZmlsbD0iI0U1OTcwMyIgZD0iTTAgNTBoOTZ2MTRjMCAyLjItMS44IDQtNCA0SDRjLTIuMiAwLTQtMS44LTQtNFY1MHoiLz48cGF0aCBvcGFjaXR5PSIuMDUiIGZpbGw9IiNGRkYiIGQ9Ik00IDY3LjljLTIuMiAwLTQtMS44LTQtNFY0YzAtMi4yIDEuOC00IDQtNGg4OGMyLjIgMCA0IDEuOCA0IDQiLz48cGF0aCBmaWxsPSIjMDA1ODlGIiBkPSJNMzcuMSA0Mi40TDQwIDI1LjVoNC42bC0yLjkgMTYuOXpNNTguNCAyNmMtLjktLjMtMi4zLS43LTQuMS0uNy00LjYgMC03LjggMi4zLTcuOCA1LjYgMCAyLjQgMi4zIDMuOCA0IDQuNiAxLjguOCAyLjQgMS40IDIuNCAyLjEgMCAxLjEtMS40IDEuNy0yLjggMS43LTEuOCAwLTIuOC0uMy00LjMtLjlsLS42LS40LS42IDMuOGMxLjEuNSAzLjEuOSA1LjEuOSA0LjggMCA4LTIuMyA4LTUuOCAwLTEuOS0xLjItMy40LTMuOS00LjYtMS42LS44LTIuNi0xLjMtMi42LTIuMSAwLS43LjgtMS41IDIuNi0xLjUgMS41IDAgMi42LjMgMy40LjZsLjQuMi44LTMuNU03MC4yIDI1LjZoLTMuNmMtMS4xIDAtMS45LjMtMi40IDEuNGwtNi44IDE1LjVoNC44cy44LTIuMSAxLTIuNWg1LjljLjEuNi42IDIuNS42IDIuNUg3NGwtMy44LTE2LjltLTUuNyAxMC44Yy40LTEgMS44LTQuNyAxLjgtNC43cy40LTEgLjYtMS42bC4zIDEuNXMuOSA0IDEuMSA0LjloLTMuOHpNMzMuMiAyNS42bC00LjUgMTEuNS0uNS0yLjNjLS44LTIuNy0zLjUtNS42LTYuNC03LjFMMjYgNDIuNGg0LjlsNy4zLTE2LjloLTUiLz48cGF0aCBmaWxsPSIjRjlBNTFBIiBkPSJNMjQuNSAyNS41aC03LjRsLS4xLjRjNS44IDEuNCA5LjYgNC44IDExLjIgOC44TDI2LjYgMjdjLS4yLTEuMS0xLjEtMS40LTIuMS0xLjUiLz48L3N2Zz4K';
+                    break;
+                case 'diners':
+                    image = 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDk2IDY4Ij48cGF0aCBmaWxsPSIjMDA2OUFBIiBkPSJNNCAwaDg4YzIuMiAwIDQgMS44IDQgNHY2MGMwIDIuMi0xLjggNC00IDRINGMtMi4yIDAtNC0xLjgtNC00VjRjMC0yLjIgMS44LTQgNC00eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik01MS44IDUxaC04LjJDMzQgNTEgMjYgNDMuMiAyNiAzMy43IDI2IDIzLjIgMzMuOSAxNiA0My42IDE2aDguMkM2MS4zIDE2IDcwIDIzLjIgNzAgMzMuN2MwIDkuNS04LjcgMTcuNC0xOC4yIDE3LjN6bS04LjMtMzNDMzQuOSAxOCAyOCAyNSAyOCAzMy41UzM0LjkgNDkgNDMuNSA0OSA1OSA0Mi4xIDU5IDMzLjUgNTIuMSAxOCA0My41IDE4ek00NiA0NC44VjIyLjNjNS4xIDEuMSA5IDUuNyA5IDExLjJzLTMuOSAxMC4xLTkgMTEuM3pNMzIgMzMuNWMwLTUuNSAzLjktMTAuMSA5LTExLjJ2MjIuNGMtNS4xLTEuMS05LTUuNy05LTExLjJ6Ii8+PHBhdGggb3BhY2l0eT0iLjA1IiBmaWxsPSIjRkZGIiBkPSJNNCA2OGgxLjhMOTYgNS44VjRjMC0yLjItMS44LTQtNC00SDRDMS44IDAgMCAxLjggMCA0djYwYzAgMi4yIDEuOCA0IDQgNHoiLz48L3N2Zz4K';
+                    break;
+                case 'discover':
+                    image = 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDk2IDY4Ij48cGF0aCBmaWxsPSIjRjdFOEQ3IiBkPSJNNCAwaDg4YzIuMiAwIDQgMS44IDQgNHY2MGMwIDIuMi0xLjggNC00IDRINGMtMi4yIDAtNC0xLjgtNC00VjRjMC0yLjIgMS44LTQgNC00eiIvPjxwYXRoIGZpbGw9IiNGNDgyMjEiIGQ9Ik05NiA0Ni40VjY0YzAgMi4yLTEuOCA0LTQgNEgyMC4xQzU0LjkgNjQuOCA3OC40IDU2LjYgOTYgNDYuNHoiLz48cGF0aCBmaWxsPSIjMTkwRjA0IiBkPSJNODMgMzkuN2gtMi42bC0zLTQuMmgtLjN2NC4ySDc1VjI5LjJoMy4yYzIuNSAwIDMuOSAxLjEgMy45IDMuMSAwIDEuNi0uOSAyLjctMi41IDNsMy40IDQuNHptLTMuMi03LjNjMC0xLS43LTEuNi0yLjEtMS42SDc3VjM0aC42YzEuNS4xIDIuMi0uNSAyLjItMS42em0tMTIuMy0zLjJoNi4xVjMxaC0zLjl2Mi4zaDMuOHYxLjhoLTMuOFYzOGgzLjl2MS44aC02LjFWMjkuMnpNNjAuNiA0MGwtNC43LTEwLjhoMi4zbDIuOSA3LjEgMy03LjFoMi4zTDYxLjcgNDBoLTEuMXptLTE5LjUgMGMtMy4zIDAtNS44LTIuNC01LjgtNS41IDAtMyAyLjYtNS41IDUuOS01LjUuOSAwIDEuNy4yIDIuNi42VjMyYy0uOS0uOC0xLjctMS4yLTIuNy0xLjItMiAwLTMuNiAxLjYtMy42IDMuNiAwIDIuMSAxLjUgMy42IDMuNyAzLjYgMSAwIDEuNy0uMyAyLjYtMS4xdjIuNGMtMSAuNS0xLjguNy0yLjcuN3ptLTYuNS0zLjVjMCAyLTEuNiAzLjQtMy44IDMuNC0xLjYgMC0yLjgtLjYtMy44LTJsMS40LTEuM2MuNS45IDEuMyAxLjQgMi4zIDEuNCAxIDAgMS43LS42IDEuNy0xLjUgMC0uNC0uMi0uOC0uNi0xLjEtLjItLjEtLjYtLjMtMS41LS42LTItLjctMi43LTEuNC0yLjctMi45IDAtMS43IDEuNS0zIDMuNC0zIDEuMiAwIDIuMy40IDMuMiAxLjJsLTEuMSAxLjRjLS42LS42LTEuMS0uOC0xLjctLjgtLjkgMC0xLjYuNS0xLjYgMS4yIDAgLjYuNC45IDEuNyAxLjMgMi40LjkgMy4xIDEuNyAzLjEgMy4zem0tMTAuNS03LjNoMi4xdjEwLjVoLTIuMVYyOS4yem0tNyAxMC41SDE0VjI5LjJoMy4yYzMuNSAwIDUuOSAyLjIgNS45IDUuMyAwIDEuNS0uNyAzLTIgNC0xLjEuOS0yLjMgMS4yLTQgMS4yem0yLjYtNy44Yy0uNy0uNy0xLjYtLjktMy0uOWgtLjZ2N2guNmMxLjQgMCAyLjMtLjMgMi45LS44LjctLjYgMS4yLTEuNiAxLjItMi42LjEtMS4xLS40LTIuMS0xLjEtMi43eiIvPjxwYXRoIGZpbGw9IiNGNDgyMjEiIGQ9Ik01MC41IDI5Yy0zLjIgMC01LjkgMi40LTUuOSA1LjQgMCAzLjIgMi41IDUuNSA1LjkgNS41IDMuMyAwIDUuOS0yLjQgNS45LTUuNS0uMS0zLTIuNi01LjQtNS45LTUuNHoiLz48cGF0aCBvcGFjaXR5PSIuMiIgZmlsbD0iI0ZGRiIgZD0iTTQgNjhjLTIuMiAwLTQtMS44LTQtNFY0YzAtMi4yIDEuOC00IDQtNGg4OGMyLjIgMCA0IDEuOCA0IDQiLz48L3N2Zz4K';
+                    break;
+            }
+
+            var $creditCard = document.querySelector('[data-creditcard]');
+            var style = window.getComputedStyle($creditCard);
+
+            $creditCard.style.backgroundImage = image ? ('url("data:image/svg+xml;base64,' + image + '")')  : 'none';
+            $creditCard.style.backgroundSize = 'auto calc(100% - ' + (parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)) + 'px)';
+            $creditCard.style.backgroundRepeat = 'no-repeat';
+            $creditCard.style.backgroundPosition = 'center right 0.5em';
+        }
+    });
+</script>
+
+[Cleave.js]: https://nosir.github.io/cleave.js/
 
 */
 .form-text {
