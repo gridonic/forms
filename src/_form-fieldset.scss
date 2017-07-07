@@ -48,6 +48,20 @@ Here is a little example:
 </fieldset>
 ```
 
+⚠️ If you want to use the fieldset just for accessibility/markup reasons
+without the visual impact you can use the `-plain` switch.
+
+```html
+<fieldset class="form-fieldset -plain">
+    <legend class="legend form-legend">Where are you from?</legend>
+
+    <div class="form-text">
+        <label for="city" class="form-label label">City</label>
+        <input type="text" id="city" class="input">
+    </div>
+</fieldset>
+```
+
 */
 .form-fieldset {
     border: 0;
