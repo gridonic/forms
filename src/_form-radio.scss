@@ -9,6 +9,13 @@ category:
 sourcePath: "@gridonic/forms/src/_form-radio.scss"
 ---
 
+> Radio buttons are used when there is a list of two or more options that are
+> **mutually exclusive** and the user must select exactly one choice. In other
+> words, clicking a non-selected radio button will deselect whatever other
+> button was previously selected in the list.
+>
+> <cite>**Jakob Nielsen**, [Checkboxes vs. Radio Buttons]</cite>
+
 Radio buttons are rendered by default as circles that are checked (ticked) when
 activated.
 
@@ -16,37 +23,39 @@ You must use the `value` attribute to define the value submitted by this item.
 Use the `checked` attribute to indicate whether this item is selected by
 default.
 
-Radio buttons that have the *same* value for the `name` attribute are in the
-*same* “radio button group”. Only *one* radio button in a group can be selected
-*at a time*.
-
 ```html
-<label class="form-radio">
-    <input type="radio" class="input" name="drink" value="mojito">
-    <span class="form-label label">Mojito</span>
-</label>
+<fieldset class="form-fieldset">
+    <legend class="legend form-legend">What’s your favorite drink?</legend>
 
-<br>
+    <label class="form-radio">
+        <input type="radio" class="input" name="drink" value="mojito">
+        <span class="form-label label">Mojito</span>
+    </label>
 
-<label class="form-radio">
-    <input type="radio" class="input" name="drink" value="long-island-iced-tea" checked>
-    <span class="form-label label">Long Island Iced Tea</span>
-</label>
+    <br>
 
-<br>
+    <label class="form-radio">
+        <input type="radio" class="input" name="drink" value="long-island-iced-tea" checked>
+        <span class="form-label label">Long Island Iced Tea</span>
+    </label>
 
-<label class="form-radio">
-    <input type="radio" class="input" name="drink" value="cosmopolitan">
-    <span class="form-label label">Cosmopolitan</span>
-</label>
+    <br>
 
-<br>
+    <label class="form-radio">
+        <input type="radio" class="input" name="drink" value="cosmopolitan">
+        <span class="form-label label">Cosmopolitan</span>
+    </label>
 
-<label class="form-radio">
-    <input type="radio" class="input" name="drink" value="margarita">
-    <span class="form-label label">Margarita</span>
-</label>
+    <br>
+
+    <label class="form-radio">
+        <input type="radio" class="input" name="drink" value="margarita">
+        <span class="form-label label">Margarita</span>
+    </label>
+</fieldset>
 ```
+
+[Checkboxes vs. Radio Buttons]: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
 
 */
 .form-radio {
