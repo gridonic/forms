@@ -172,8 +172,8 @@ entered.
 
 Elements of type [url] provide a way for editing an URL. The input value is
 validated to contain either the empty string or a valid absolute URL before
-submitting. You can use attributes such as `pattern` and `maxlength` to restrict 
-values entered in the control.
+submitting. You can use attributes such as `pattern` and `maxlength` to
+restrict values entered in the control.
 
 ```html
 <div class="form-text">
@@ -237,6 +237,10 @@ For example:
     <input type="username" id="username" class="input" pattern="^.{4,}$" placeholder="Must be at least 4 characters long&hellip;">
 </div>
 ```
+
+### See also
+
+- [Inline validation is problematic](https://adamsilver.io/articles/inline-validation-is-problematic/)
 
 [validation attributes]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
 
