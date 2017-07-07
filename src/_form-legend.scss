@@ -1,0 +1,19 @@
+/*
+---
+name: Legend
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/legend"
+sourcePath: "@gridonic/forms/src/_form-legend.scss"
+---
+
+The `form-legend` component represents a caption for the content of its parent
+`form-fieldset`.
+
+*/
+.form-legend {
+    font-size: smaller;
+    padding: 0.125em 0.75em;
+}
