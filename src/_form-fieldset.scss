@@ -1,0 +1,82 @@
+/*
+---
+name: Fieldset
+tag:
+  - forms
+category:
+  - "@gridonic/forms"
+  - "@gridonic/forms/fieldset"
+sourcePath: "@gridonic/forms/src/_form-fieldset.scss"
+---
+
+The `form-fieldset` component is a convenient way to create groups of inputs
+that share the *same* purpose, for styling and semantic purposes.
+
+You can label a fieldset by including a `form-legend` component just below the
+opening of the element. The text content of the legend formally describes the
+purpose of the fieldset.
+
+Many assistive technologies will use the legend element as if it is a part of
+the label of each input inside the corresponding fieldset element. For
+example, some screen readers such as Jaws or NVDA will speak the legend's
+content before speaking the label of each input.
+
+Here is a little example:
+
+```html
+<fieldset class="form-fieldset">
+    <legend class="legend form-legend">Fruit juice size</legend>
+
+    <label for="small" class="form-radio">
+        <input id="small" type="radio" class="input" name="drink" value="small">
+        <span class="form-label label">Small</span>
+    </label>
+
+    <br>
+
+    <label for="medium" class="form-radio">
+        <input id="medium" type="radio" class="input" name="drink" value="medium">
+        <span class="form-label label">Medium</span>
+    </label>
+
+    <br>
+
+    <label for="large" class="form-radio">
+        <input id="large" type="radio" class="input" name="drink" value="large">
+        <span class="form-label label">Large</span>
+    </label>
+</fieldset>
+```
+
+*/
+.form-fieldset {
+    border: 0;
+    margin: 0;
+
+    &:not(.-plain) {
+        border-radius: $forms-border-radius;
+        box-shadow: 0 0 0 2px $forms-color-border;
+        padding: 1em;
+
+        &:hover {
+            box-shadow: 0 0 0 2px $forms-color-focus;
+
+            > .legend {
+                background-color: $forms-color-focus;
+                color: $forms-color-background;
+            }
+        }
+
+        > .legend {
+            background-color: $forms-color-border;
+            border-radius: $forms-border-radius;
+        }
+    }
+
+    &.-plain {
+        > .legend {
+            position: absolute;
+            visibility: hidden;
+        }
+    }
+}
