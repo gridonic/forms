@@ -15,17 +15,36 @@ It can be associated with a control either by placing the control element
 *inside* the label element, **or** by using the `for` attribute. Such a control
 is called the *labeled control* of the label element.
 
-See [checkbox](../checkbox/index.html) for a more real world example.
+⚠️ This is the most important element if you want to build *accessible* forms —
+when implemented properly, screenreaders will speak a form element’s label
+along with any related instructions.
 
 ```html
-<span class="form-label">Label</span>
+<div class="form-text">
+    <label class="label form-label" for="my-input">
+        <span class="label">Label</span>
+        <span class="hint">Hint or instruction</span>
+    </label>
+    <input class="input" type="text" id="my-input" name="my-input">
+</div>
 ```
+
+### See also
+
+- [Floating labels are problematic](https://adamsilver.io/articles/floating-labels-are-problematic/)
+- [Placeholders are problematic](https://adamsilver.io/articles/placeholders-are-problematic/)
 
 */
 .form-label {
     display: inline-block;
 
-    &[for] {
-        cursor: pointer;
+    > .label {
+        display: block;
+    }
+
+    > .hint {
+        display: block;
+        font-size: smaller;
+        opacity: 0.5;
     }
 }
