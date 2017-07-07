@@ -8,6 +8,8 @@ $forms-border-radius: 2px;
 
 // Specifics
 $forms-label-margin: 0 0 0.25em !default;
+$forms-label-color: $forms-color-default !default;
+$forms-hint-color: rgba($forms-color-default, 0.5) !default;
 $forms-text-padding: 0.5em !default;
 $forms-text-color: $forms-color-default !default;
 
