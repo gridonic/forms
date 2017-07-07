@@ -238,6 +238,33 @@ For example:
 </div>
 ```
 
+⚠️ If the `novalidate` attribute is set on the `<form>` element, interactive
+validation of the constraints doesn't happen.
+
+```html
+<form novalidate>
+    <div class="form-text">
+        <label for="username2" class="form-label label">Username</label>
+        <input type="text"
+               id="username2"
+               class="input"
+               pattern="^.{4,}$"
+               placeholder="Must be at least 4 characters long&hellip;">
+    </div>
+</form>
+```
+
+⚠️ If you want to disable visual indication of validation errors **in general**
+set `$forms-use-visual-validation` to `false`. Otherwise you can disable it
+individually with `-novisual`.
+
+Each validation pseudo-class is also available as a variant class:
+
+- `:required` → `-required`
+- `:invalid` → `-invalid`
+- `:disabled` → `-disabled`
+- `:read-only` → `-read-only`
+
 ### See also
 
 - [Inline validation is problematic](https://adamsilver.io/articles/inline-validation-is-problematic/)
@@ -246,6 +273,18 @@ For example:
 
 */
 .form-text {
+    $invalid-classes: "&.-invalid";
+
+    @if ($forms-use-visual-validation) {
+        $invalid-classes: append($invalid-classes, "&:invalid", comma);
+    }
+
+    &:not(.-novisual) > .input {
+        #{$invalid-classes} {
+            border-color: $forms-color-error;
+        }
+    }
+
     > .label {
         margin: $forms-label-margin;
     }
@@ -269,11 +308,13 @@ For example:
             color: rgba($forms-text-color, 0.25);
         }
 
-        &:focus {
+        &:focus,
+        &.-focus {
             border-color: $forms-color-focus;
         }
 
-        &:required {
+        &:required,
+        &.-required {
             background-image: radial-gradient($forms-color-focus 50%, transparent 60%);
             background-size: 0.5em 0.5em;
             background-repeat: no-repeat;
@@ -281,13 +322,11 @@ For example:
             padding-right: 1.5em;
         }
 
-        &:invalid {
-            border-color: $forms-color-error;
-        }
-
         // @see https://stackoverflow.com/a/7730719/4628548
         &:read-only,
-        &:disabled {
+        &.-read-only,
+        &:disabled,
+        &.-disabled {
             cursor: not-allowed;
             opacity: 0.5;
         }
