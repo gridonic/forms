@@ -9,6 +9,16 @@ category:
 sourcePath: "@gridonic/forms/src/_form-checkbox.scss"
 ---
 
+> **Checkboxes** are used when there are lists of options and the user may
+> **select any number** of choices, including zero, one, or several. In other
+> words, each checkbox is independent of all other checkboxes in the list, so
+> checking one box doesn’t uncheck the others.
+>
+> **A stand-alone checkbox** is used for a single option that the user can turn
+> on or off.
+>
+> <cite>**Jakob Nielsen**, [Checkboxes vs. Radio Buttons]</cite>
+
 Checkboxes are rendered by default as square boxes that are checked (ticked)
 when activated, like you might see in an official government paper form. They
 allow you to select single values for submission in a form (or not).
@@ -17,32 +27,38 @@ You must use the `value` attribute to define the value submitted by this item.
 Use the `checked` attribute to indicate whether this item is selected.
 
 ```html
-<label class="form-checkbox">
-    <input type="checkbox" class="input" name="coding" value="coding">
-    <span class="form-label label">Coding</span>
-</label>
+<fieldset class="form-fieldset">
+    <legend class="legend form-legend">Choose your interests</legend>
 
-<br>
+    <label for="coding" class="form-checkbox">
+        <input id="coding" type="checkbox" class="input" name="interest" value="coding">
+        <span class="form-label label">Coding</span>
+    </label>
 
-<label class="form-checkbox">
-    <input type="checkbox" class="input" name="music" value="music" checked>
-    <span class="form-label label">Music</span>
-</label>
+    <br>
 
-<br>
+    <label for="music" class="form-checkbox">
+        <input id="music" type="checkbox" class="input" name="interest" value="music" checked>
+        <span class="form-label label">Music</span>
+    </label>
 
-<label class="form-checkbox">
-    <input type="checkbox" class="input" name="dancing" value="dancing">
-    <span class="form-label label">Dancing</span>
-</label>
+    <br>
 
-<br>
+    <label for="dancing" class="form-checkbox">
+        <input id="dancing" type="checkbox" class="input" name="interest" value="dancing">
+        <span class="form-label label">Dancing</span>
+    </label>
 
-<label class="form-checkbox">
-    <input type="checkbox" class="input" name="hiking" value="hiking" checked>
-    <span class="form-label label">Hiking</span>
-</label>
+    <br>
+
+    <label for="hiking" class="form-checkbox">
+        <input id="hiking" type="checkbox" class="input" name="interest" value="hiking" checked>
+        <span class="form-label label">Hiking</span>
+    </label>
+</fielset>
 ```
+
+[Checkboxes vs. Radio Buttons]: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
 
 */
 .form-checkbox {
