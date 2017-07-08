@@ -13,10 +13,46 @@ Represents a control that provides a menu of options.
 
 ```html
 <select class="form-select">
-    <option value="volvo">Volvo</option>
-    <option value="saab" selected="selected">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
+    <option>Audi</option>
+    <option>Bentley</option>
+    <option>BMW</option>
+    <option>Cadillac</option>
+    <option>Chevrolet</option>
+    <option>Dodge</option>
+    <option>Ferrari</option>
+    <option>Ford</option>
+    <option>Dodge</option>
+    <option>Mercedes-Benz</option>
+    <option>Saab</option>
+    <option>Volvo</option>
+</select>
+
+<br><br>
+
+<select class="form-select" multiple>
+    <optgroup label="A">
+        <option>Alfa Romeo</option>
+        <option>Aston Martin</option>
+        <option>Audi</option>
+        <option>Austin-Healey</option>
+    </optgroup>
+    <optgroup label="C">
+        <option>Cadillac</option>
+        <option>Caterham</option>
+        <option>Chevrolet</option>
+        <option>Chrysler</option>
+        <option>Citroen</option>
+    </optgroup>
+    <optgroup label="C">
+        <option>Maserati</option>
+        <option>Mazda</option>
+        <option>McLaren</option>
+        <option>Mercedes-benz</option>
+        <option>MG</option>
+        <option>Mini</option>
+        <option>Mitsubishi</option>
+        <option>Morgan</option>
+    </optgroup>
 </select>
 ```
 
@@ -27,10 +63,6 @@ Represents a control that provides a menu of options.
             appearance: none;
 
     background-color: $forms-color-background;
-    background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12"><path fill="none" stroke="#{$forms-color-border}" stroke-width="1.5" d="M1 1l10 10M21 1L11 11" stroke-linecap="round"/></svg>');
-    background-position: center right 0.5em;
-    background-repeat: no-repeat;
-    background-size: 1em;
     border-radius: $forms-border-radius;
     border: 1px solid $forms-color-border;
     color: $forms-text-color;
@@ -40,8 +72,15 @@ Represents a control that provides a menu of options.
     line-height: inherit;
     outline: 0;
     padding: $forms-text-padding;
-    padding-right: 2em;
     width: 100%;
+
+    &:not([multiple]) {
+        background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12"><path fill="none" stroke="#{$forms-color-border}" stroke-width="1.5" d="M1 1l10 10M21 1L11 11" stroke-linecap="round"/></svg>');
+        background-position: center right 0.5em;
+        background-repeat: no-repeat;
+        background-size: 1em;
+        padding-right: 2em;
+    }
 
     &:focus {
         border-color: $forms-color-focus;
@@ -59,5 +98,11 @@ Represents a control that provides a menu of options.
 
     &::-ms-expand {
         display: none;
+    }
+
+    optgroup {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
     }
 }
