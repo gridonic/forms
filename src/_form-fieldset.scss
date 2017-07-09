@@ -66,6 +66,7 @@ without the visual impact you can use the `-plain` switch.
 .form-fieldset {
     border: 0;
     margin: 0;
+    padding: 0;
 
     &:not(.-plain) {
         border-radius: $forms-border-radius;
