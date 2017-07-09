@@ -74,6 +74,10 @@ Use the `checked` attribute to indicate whether this item is selected.
         top: 0;
         width: 100%;
 
+        &:disabled {
+            cursor: not-allowed;
+        }
+
         &:focus + .label::before {
             border-color: $forms-color-focus;
         }
