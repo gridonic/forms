@@ -10,3 +10,6 @@ A *superset* of common form elements created in accordance with the latest best 
   <a href="https://gridonic.github.io">gridonic.github.io</a> ・
   <a href="https://twitter.com/gridonic">@gridonic</a>
 </p>
+
+<br>
+<p align="right"><sub>Illustration by <a href="http://www.webalys.com/">Vincent Le Moign</a></sub></p>
