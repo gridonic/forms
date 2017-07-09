@@ -4,10 +4,10 @@ name: Basic state
 tag:
   - forms
 category:
-  - "@gridonic/forms"
-  - "@gridonic/forms/text"
-  - "@gridonic/forms/text/basic"
-sourcePath: "@gridonic/forms/src/_form-text.scss"
+  - "@gridonic/superforms"
+  - "@gridonic/superforms/text"
+  - "@gridonic/superforms/text/basic"
+sourcePath: "@gridonic/superforms/src/_form-text.scss"
 ---
 
 A single-line text field. Line-breaks are automatically removed from the input
@@ -66,10 +66,10 @@ name: Extended types
 tag:
   - forms
 category:
-  - "@gridonic/forms"
-  - "@gridonic/forms/text"
-  - "@gridonic/forms/text/extended"
-sourcePath: "@gridonic/forms/src/_form-text.scss"
+  - "@gridonic/superforms"
+  - "@gridonic/superforms/text"
+  - "@gridonic/superforms/text/extended"
+sourcePath: "@gridonic/superforms/src/_form-text.scss"
 ---
 
 ### Date
@@ -237,10 +237,10 @@ name: Data validation
 tag:
   - forms
 category:
-  - "@gridonic/forms"
-  - "@gridonic/forms/text"
-  - "@gridonic/forms/text/validation"
-sourcePath: "@gridonic/forms/src/_form-text.scss"
+  - "@gridonic/superforms"
+  - "@gridonic/superforms/text"
+  - "@gridonic/superforms/text/validation"
+sourcePath: "@gridonic/superforms/src/_form-text.scss"
 ---
 
 One of the features of HTML5 is the ability to validate most user data without
@@ -315,10 +315,10 @@ name: Formatting
 tag:
   - forms
 category:
-  - "@gridonic/forms"
-  - "@gridonic/forms/text"
-  - "@gridonic/forms/text/formatting"
-sourcePath: "@gridonic/forms/src/_form-text.scss"
+  - "@gridonic/superforms"
+  - "@gridonic/superforms/text"
+  - "@gridonic/superforms/text/formatting"
+sourcePath: "@gridonic/superforms/src/_form-text.scss"
 ---
 
 There is a wonderful library called [Cleave.js] which has a simple purpose: to

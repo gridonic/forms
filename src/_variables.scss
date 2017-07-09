@@ -18,16 +18,18 @@ $forms-use-visual-validation: true !default;
 
 /*
 ---
-name: Forms
+name: Superforms
 tag:
   - forms
 category:
-  - "@gridonic/forms"
-sourcePath: "@gridonic/forms/src/forms.scss"
+  - "@gridonic/superforms"
+sourcePath: "@gridonic/superforms/src/forms.scss"
 ---
 
-The elements documented below represent a collection of interactive controls
-for submitting information to a web server.
+<p align="center">[![Gridonic Superforms](https://camo.githubusercontent.com/128318e9837651f22ca5a7512bf5d449bd11612d/68747470733a2f2f677269646f6e69632e6769746875622e696f2f6173736574732f696d616765732f6c6f676f732f7375706572666f726d732e737667)](https://github.com/gridonic/superforms)</p>
+
+A *superset* of common form elements created in accordance with the latest best
+practices, highly focused on accessibility and easy to use for developers.
 
 ### Technical customization
 
