@@ -23,7 +23,7 @@ value.
 
 <div class="form-text">
     <label for="input2" class="form-label label">Label</label>
-    <input type="text" id="input2" class="input" placeholder="Read only field" readonly>
+    <input type="text" id="input2" class="input" placeholder="Read only field&hellip;" readonly>
 </div>
 
 <br>
@@ -475,8 +475,12 @@ mind-blowing regular expressions or mask patterns to format input text.
         &.-read-only,
         &:disabled,
         &.-disabled {
-            cursor: not-allowed;
             opacity: 0.5;
+        }
+
+        &:disabled,
+        &.-disabled {
+            cursor: not-allowed;
         }
 
         // Browser specific adjustments…
