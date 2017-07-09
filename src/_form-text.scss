@@ -446,9 +446,10 @@ mind-blowing regular expressions or mask patterns to format input text.
         font-family: inherit;
         font-size: inherit;
         line-height: inherit;
+        margin: 0;
         outline: 0;
         padding: $forms-text-padding;
-        resize: none;
+        resize: vertical;
         width: 100%;
 
         &::placeholder {
