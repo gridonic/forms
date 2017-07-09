@@ -1,12 +1,12 @@
 {
-  "name": "@gridonic/forms",
+  "name": "@gridonic/superforms",
   "version": "1.0.0",
   "description": "Forms, forms, forms.",
   "main": "src/forms.scss",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gridonic/forms.git"
+    "url": "git+https://github.com/gridonic/superforms.git"
   },
   "keywords": [
     "forms",
@@ -22,9 +22,9 @@
   "author": "Gridonic <hello@gridonic.ch>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gridonic/forms/issues"
+    "url": "https://github.com/gridonic/superforms/issues"
   },
-  "homepage": "https://github.com/gridonic/forms#readme",
+  "homepage": "https://github.com/gridonic/superforms#readme",
   "dependencies": {
     "sass-svg-uri": "^1.0.0"
   }
