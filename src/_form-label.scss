@@ -19,6 +19,13 @@ is called the *labeled control* of the label element.
 when implemented properly, screenreaders will speak a form element’s label
 along with any related instructions.
 
+### 👍 Best Practices
+
+- Resist using placeholder text as labels as this causes many usability issues.
+- Use succinct, short and descriptive labels (a word or two) so users can quickly scan your form.
+- Users complete top aligned labeled forms at a much higher rate than left aligned labels.
+- “All Caps” labels are very hard to read.
+
 ```html
 <div class="form-text">
     <label class="label form-label" for="my-input">
@@ -34,6 +41,7 @@ along with any related instructions.
 - [Floating labels are problematic](https://adamsilver.io/articles/floating-labels-are-problematic/)
 - [Placeholders are problematic](https://adamsilver.io/articles/placeholders-are-problematic/)
 - [Placeholders in Form Fields Are Harmful](https://www.nngroup.com/articles/form-design-placeholders/)
+- [Label Placement in Forms](http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)
 
 */
 .form-label {

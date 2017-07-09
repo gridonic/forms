@@ -63,11 +63,23 @@ $forms-text-padding: #{$forms-text-padding}
 $forms-text-color: #{$forms-text-color}
 ```
 
+### 👍 Best Practices
+
+- Forms should never consist of more than one column.
+- Try to minimize the number of fields as much as possible.
+- Users should be able to trigger and edit every field using only the keyboard.
+- Autofocusing a field gives the users an indication and a starting point to quickly begin to fill out the form.
+- Mobile-only: Match the keyboard with the required text inputs.
+- Avoid generic words such as “Submit” for actions, because they give the impression that the form itself is generic. Instead state what actions the buttons do when clicked.
+- Don’t use a “reset” button as this button almost never helps users, but often hurts them.
+
+
 ### See also
 
 - [How to structure an HTML form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/How_to_structure_an_HTML_form)
 - [A List Apart: Sensible Forms: A Form Usability Checklist](http://www.alistapart.com/articles/sensibleforms/)
 - [Design Better Forms](https://uxdesign.cc/design-better-forms-96fadca0f49c)
-- [Designing More Efficient Forms: Structure, Inputs, Labels and Actions](https://uxplanet.org/designing-more-efficient-forms-structure-inputs-labels-and-actions-e3a47007114f)
+- [Designing More Efficient Forms: Structure, Inputs, Labels and Actions](http://babich.biz/designing-more-efficient-forms-structure-inputs-labels-and-actions/)
+- [Three rules for creating accessible forms](https://www.nomensa.com/blog/2010/three-rules-for-creating-accessible-forms)
 
 */

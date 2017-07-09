@@ -23,6 +23,10 @@ You must use the `value` attribute to define the value submitted by this item.
 Use the `checked` attribute to indicate whether this item is selected by
 default.
 
+### 👍 Best Practices
+
+- Placing radios underneath each other allows easy scanning.
+
 ```html
 <fieldset class="form-fieldset">
     <legend class="legend form-legend">What’s your favorite drink?</legend>

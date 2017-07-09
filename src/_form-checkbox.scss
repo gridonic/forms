@@ -26,6 +26,10 @@ allow you to select single values for submission in a form (or not).
 You must use the `value` attribute to define the value submitted by this item.
 Use the `checked` attribute to indicate whether this item is selected.
 
+### 👍 Best Practices
+
+- Placing checkboxes underneath each other allows easy scanning.
+
 ```html
 <fieldset class="form-fieldset">
     <legend class="legend form-legend">Choose your interests</legend>

@@ -13,6 +13,14 @@ sourcePath: "@gridonic/superforms/src/_form-text.scss"
 A single-line text field. Line-breaks are automatically removed from the input
 value.
 
+### 👍 Best Practices
+
+- Don’t make the physical size of the input box cover less area than the expected entry.
+- Also the length of the field affords the length of the answer. Employ this for fields that have a defined character count like phone numbers, zip codes, etc.
+- Present the label and input close together, and make sure there is enough height between the fields so users don’t get confused.
+- Show the user where the error occurred and provide an informative error message.
+- Don’t use inline validation while the user is typing  —  unless it helps them  —  like in the case of creating a password, username, or message with a character count.
+
 ```html
 <div class="form-text">
     <label for="input1" class="form-label label">Label</label>

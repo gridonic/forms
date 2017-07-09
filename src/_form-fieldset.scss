@@ -12,16 +12,22 @@ sourcePath: "@gridonic/superforms/src/_form-fieldset.scss"
 The `form-fieldset` component is a convenient way to create groups of inputs
 that share the *same* purpose, for styling and semantic purposes.
 
-You can label a fieldset by including a `form-legend` component just below the
-opening of the element. The text content of the legend formally describes the
-purpose of the fieldset.
+You can label a fieldset by including a [form-legend](./legend) component just
+below the opening of the element. The text content of the legend formally
+describes the purpose of the fieldset.
 
 Many assistive technologies will use the legend element as if it is a part of
 the label of each input inside the corresponding fieldset element. For
 example, some screen readers such as Jaws or NVDA will speak the legend's
 content before speaking the label of each input.
 
-Here is a little example:
+⚠️ If you want to use the fieldset just for accessibility/markup reasons
+without the visual impact you can use the `-plain` switch.
+
+### 👍 Best Practices
+
+- Grouped elements keep the form manageable to the user, as it can be broken down into smaller pieces in his/her mind.
+- It’s one of the key elements for building accessible forms; however it is your responsibility not to abuse it.
 
 ```html
 <fieldset class="form-fieldset">
@@ -46,12 +52,9 @@ Here is a little example:
         <span class="form-label label">Large</span>
     </label>
 </fieldset>
-```
 
-⚠️ If you want to use the fieldset just for accessibility/markup reasons
-without the visual impact you can use the `-plain` switch.
+<br>
 
-```html
 <fieldset class="form-fieldset -plain">
     <legend class="legend form-legend">Where are you from?</legend>
 

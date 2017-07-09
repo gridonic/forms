@@ -9,8 +9,15 @@ category:
 sourcePath: "@gridonic/superforms/src/_form-legend.scss"
 ---
 
-The `form-legend` component represents a caption for the content of its parent
-`form-fieldset`.
+For any given `form-fieldset` there should always be one associated
+`form-legend` element. This should appear directly after the opening
+`form-fieldset` element and should provide a descriptive context from which the
+purpose of following form fields can be identified.
+
+⚠️ If legend tags are not implemented effectively, people with cognitive 
+disabilities may find it hard to identify the context of the form, and hence
+the purpose of the form fields that follow are more likely
+to be ambiguous.
 
 */
 .form-legend {
