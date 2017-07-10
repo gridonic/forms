@@ -337,7 +337,7 @@ mind-blowing regular expressions or mask patterns to format input text.
             <span class="label">Credit card number</span>
             <span class="hint">Try 34…, 300…, 4…, 51… or 65…</span>
         </label>
-        <input type="text"
+        <input type="tel"
                id="creditcard1"
                class="input"
                data-creditcard>
