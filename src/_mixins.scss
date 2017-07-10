@@ -1,0 +1,38 @@
+@mixin state-default {
+    background-color: $forms-color-background;
+    border: 1px solid $forms-color-border;
+    border-radius: $forms-border-radius;
+}
+
+@mixin state-hover {
+    background-color: $forms-color-background;
+    border-color: mix(black, $forms-color-border, 25%);
+}
+
+@mixin state-focus {
+    background-color: mix(white, $forms-color-focus, 96%);
+    border-color: $forms-color-focus;
+}
+
+// @see https://stackoverflow.com/a/7730719/4628
+@mixin state-readonly {
+    background-color: mix(black, $forms-color-background, 4%);
+    border-color: mix(white, $forms-color-border, 50%);
+    color: mix(white, $forms-text-color, 75%);
+}
+
+@mixin state-disabled {
+    @include state-readonly;
+
+    cursor: not-allowed;
+}
+
+@mixin state-error {
+    background-color: mix(white, $forms-color-error, 96%);
+    border-color: $forms-color-error;
+}
+
+@mixin state-success {
+    background-color: mix(white, $forms-color-success, 96%);
+    border-color: $forms-color-success;
+}
