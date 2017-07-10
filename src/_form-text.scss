@@ -251,69 +251,42 @@ category:
 sourcePath: "@gridonic/superforms/src/_form-text.scss"
 ---
 
-One of the features of HTML5 is the ability to validate most user data without
-relying on scripts. This is done using [validation attributes] on form
-elements, which allow you to specify rules for a form input like whether a
-value needs to be filled in, the minimum and maximum length of the data,
-whether it needs to be a number, an email address, etc., and a pattern that it
-must match.
 
-If the entered data follows all those rules, it is considered valid; if not,
-it is considered invalid.
+> Inline validation causes many problems and forces users to switch between
+> filling in forms and fixing them.
+>
+> <cite>**Adam Silver**, [Inline validation is problematic]</cite>
 
-For example:
+> These negative reactions, longer completion times, and error rates illustrate
+> that validating inputs prematurely can be harmful. Instead, when you validate
+> open-ended questions, give feedback after the user finishes providing an
+> answer.
+>
+> <cite>**Luke Wroblewski**, [Inline Validation in Web Forms]</cite>
 
-```html
-<form>
-    <div class="form-text">
-        <label for="username1" class="form-label label">
-            <span class="label">Username</span>
-            <span class="hint">Must be at least 4 characters long&hellip;</span>
-        </label>
-        <input required
-               type="text"
-               id="username1"
-               class="input"
-               pattern="^.{4,}$">
-    </div>
-</form>
-```
+> Most people don’t like being told they are wrong – especially when they
+> aren’t. Users therefore naturally find it very frustrating and (quite
+> understandably) feel unfairly reprimanded when a site claims they’ve made a
+> mistake before they’ve had a chance to enter a valid input.
+>
+> <cite>**Christian Holst**, [Usability Testing of Inline Form Validation]</cite>
 
-⚠️ If the `novalidate` attribute is set on the `<form>` element, interactive
-validation of the constraints doesn't happen.
-
-```html
-<form novalidate>
-    <div class="form-text">
-        <label for="username2" class="form-label label">
-            <span class="label">Username</span>
-            <span class="hint">Must be at least 4 characters long&hellip;</span>
-        </label>
-        <input type="text"
-               id="username2"
-               class="input"
-               pattern="^.{4,}$">
-    </div>
-</form>
-```
-
-⚠️ If you want to disable visual indication of validation errors **in general**
-set `$forms-use-visual-validation` to `false`. Otherwise you can disable it
-individually with `-novisual`.
-
-Each validation pseudo-class is also available as a variant class:
-
-- `:required` → `-required`
-- `:invalid` → `-invalid`
-- `:disabled` → `-disabled`
-- `:read-only` → `-read-only`
+For the reasons above, Superforms *only* provides classes for states of
+validation without hooking into the browser [constraint validation] states that
+uses pseudo-classes like `:valid` or `:invalid`.
 
 ### See also
 
-- [Inline validation is problematic](https://adamsilver.io/articles/inline-validation-is-problematic/)
-- [Forward Thinking Form Validation](https://alistapart.com/article/forward-thinking-form-validation)
+- [Usability Testing of Inline Form Validation]
+- [Inline Validation in Web Forms]
+- [Forward Thinking Form Validation]
+- [Inline validation is problematic]
 
-[validation attributes]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
+[Usability Testing of Inline Form Validation]: https://baymard.com/blog/inline-form-validation
+[Inline Validation in Web Forms]: https://alistapart.com/article/inline-validation-in-web-forms
+[Forward Thinking Form Validation]: https://alistapart.com/article/forward-thinking-form-validation
+[Inline validation is problematic]: https://adamsilver.io/articles/inline-validation-is-problematic/
+[constraint validation]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
 
 */
 
@@ -428,17 +401,6 @@ mind-blowing regular expressions or mask patterns to format input text.
 
 */
 .form-text {
-    $invalid-classes: "&.-invalid";
-
-    @if ($forms-use-visual-validation) {
-        $invalid-classes: append($invalid-classes, "&:invalid", comma);
-    }
-
-    &:not(.-novisual) > .input {
-        #{$invalid-classes} {
-            border-color: $forms-color-error;
-        }
-    }
 
     > .label {
         margin: $forms-label-margin;
