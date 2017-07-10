@@ -73,21 +73,23 @@ without the visual impact you can use the `-plain` switch.
 
     &:not(.-plain) {
         border-radius: $forms-border-radius;
-        box-shadow: 0 0 0 2px $forms-color-border;
-        padding: 1em;
+        border: 1px solid $forms-color-border;
+        padding: 1.25em;
 
         &:hover {
-            box-shadow: 0 0 0 2px $forms-color-focus;
+            border-color: $forms-color-focus;
 
             > .legend {
-                background-color: $forms-color-focus;
-                color: $forms-color-background;
+                color: $forms-color-focus;
             }
         }
 
         > .legend {
-            background-color: $forms-color-border;
+            border-color: currentColor;
             border-radius: $forms-border-radius;
+            border-style: solid;
+            border-width: 1px;
+            color: $forms-hint-color;
         }
     }
 
