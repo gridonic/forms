@@ -23,25 +23,31 @@ value.
 
 ```html
 <div class="form-text">
-    <label for="input1" class="form-label label">Label</label>
-    <input type="text" id="input1" class="input" placeholder="Optional field">
+    <label for="input1" class="form-label label">
+        <span class="label">Label</span>
+        <span class="hint">Informative hint…</span>
+    </label>
+    <input type="text" id="input1" class="input" placeholder="Optional field&hellip;">
 </div>
 
 <br>
 
 <div class="form-text">
-    <label for="input2" class="form-label label">Label</label>
-    <input type="text" id="input2" class="input" placeholder="Read only field&hellip;" readonly>
+    <label for="useragent" class="form-label label">
+        <span class="label">User agent</span>
+        <span class="hint">Will be detected automatically.</span>
+    </label>
+    <input type="text" id="useragent" class="input" readonly>
 </div>
 
 <br>
 
-<div class="form-text">
-    <label for="input3" class="form-label label">
+<div class="form-text -success">
+    <label for="beverage" class="form-label label">
         <span class="label">What’s your favorite beverage?</span>
         <span class="hint">Mandatory field, e.g. Coca-Cola.</span>
     </label>
-    <input required type="text" id="input3" class="input">
+    <input required type="text" id="beverage" class="input" value="Pepsi Cola">
 </div>
 
 <br>
@@ -65,6 +71,8 @@ value.
     <textarea id="feedback" class="input" name="feedback"></textarea>
 </div>
 ```
+
+<script>document.getElementById('useragent').value = navigator.userAgent;</script>
 
 */
 
@@ -401,15 +409,18 @@ mind-blowing regular expressions or mask patterns to format input text.
 
 */
 .form-text {
+    $icon-size: 2em;
 
     > .label {
         margin: $forms-label-margin;
     }
 
     > .input {
-        background-color: $forms-color-background;
-        border: 1px solid $forms-color-border;
-        border-radius: $forms-border-radius;
+        @include state-default;
+
+        background-position: center right ($icon-size / 4);
+        background-repeat: no-repeat;
+        background-size: ($icon-size / 2) ($icon-size / 2);
         box-shadow: none;
         color: $forms-text-color;
         display: block;
@@ -417,40 +428,14 @@ mind-blowing regular expressions or mask patterns to format input text.
         font-size: inherit;
         line-height: inherit;
         margin: 0;
+        min-width: 100%;
         outline: 0;
         padding: $forms-text-padding;
         resize: vertical;
         width: 100%;
 
         &::placeholder {
-            color: rgba($forms-text-color, 0.25);
-        }
-
-        &:focus,
-        &.-focus {
-            border-color: $forms-color-focus;
-        }
-
-        &:required,
-        &.-required {
-            background-image: radial-gradient($forms-color-focus 50%, transparent 60%);
-            background-size: 0.5em 0.5em;
-            background-repeat: no-repeat;
-            background-position: center right 0.5em;
-            padding-right: 1.5em;
-        }
-
-        // @see https://stackoverflow.com/a/7730719/4628548
-        &:read-only,
-        &.-read-only,
-        &:disabled,
-        &.-disabled {
-            opacity: 0.5;
-        }
-
-        &:disabled,
-        &.-disabled {
-            cursor: not-allowed;
+            color: mix(white, $forms-text-color, 75%);
         }
 
         // Browser specific adjustments…
@@ -463,19 +448,53 @@ mind-blowing regular expressions or mask patterns to format input text.
         }
     }
 
-    > .feedback {
-        display: none;
-        margin-top: 0.25em;
+    > .input:hover,
+    &.-hover > .input {
+        @include state-hover;
     }
 
-    &.-error {
-        > .input {
-            border-color: $forms-color-error;
-        }
+    > .input:disabled,
+    &.-disabled > .input {
+        @include state-disabled;
+    }
 
-        > .feedback {
+    > .input:read-only,
+    &.-readonly > .input {
+        @include state-readonly;
+    }
+
+    &.-error > .input {
+        @include state-error;
+
+        background-image: inline-svg("#{$forms-assets-path}/cross.svg", (none: #{$forms-color-error}));
+        padding-right: $icon-size;
+
+        ~ .feedback {
             display: block;
             color: $forms-color-error;
         }
+    }
+
+    &.-success > .input {
+        @include state-success;
+
+        background-image: inline-svg("#{$forms-assets-path}/tick.svg", (none: #{$forms-color-success}));
+        padding-right: $icon-size;
+
+        ~ .feedback {
+            display: none;
+        }
+    }
+
+    > .input:focus,
+    &.-focus > .input {
+        @include state-focus;
+
+        background-image: none;
+    }
+
+    > .feedback {
+        display: none;
+        margin-top: 0.25em;
     }
 }
