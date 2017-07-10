@@ -80,7 +80,7 @@ Represents a control that provides a menu of options.
     width: 100%;
 
     &:not([multiple]) {
-        background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12"><path fill="none" stroke="#{$forms-color-border}" stroke-width="1.5" d="M1 1l10 10M21 1L11 11" stroke-linecap="round"/></svg>');
+        background-image: inline-svg("#{$forms-assets-path}/chevron-down.svg", (none: #{$forms-color-border}));
         background-position: center right 0.5em;
         background-repeat: no-repeat;
         background-size: 1em;
@@ -89,6 +89,9 @@ Represents a control that provides a menu of options.
 
     &:focus {
         border-color: $forms-color-focus;
+        &:not([multiple]) {
+            background-image: inline-svg("#{$forms-assets-path}/chevron-down.svg", (none: #{$forms-color-focus}));
+        }
 
         &:-moz-focusring {
             color: transparent;
@@ -99,6 +102,11 @@ Represents a control that provides a menu of options.
     &:disabled {
         cursor: not-allowed;
         opacity: 0.5;
+    &.-error {
+        &:not([multiple]) {
+            background-image: inline-svg("#{$forms-assets-path}/chevron-down.svg", (none: #{$forms-color-error}));
+        }
+    }
     }
 
     &::-ms-expand {
