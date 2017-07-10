@@ -279,9 +279,17 @@ sourcePath: "@gridonic/superforms/src/_form-text.scss"
 >
 > <cite>**Christian Holst**, [Usability Testing of Inline Form Validation]</cite>
 
-For the reasons above, Superforms *only* provides classes for states of
-validation without hooking into the browser [constraint validation] states that
-uses pseudo-classes like `:valid` or `:invalid`.
+Because of the reasons listed above, Superforms *only* provides “static”
+classes for states of validation, **without** hooking into the browser
+[constraint validation] states, which would include using pseudo-classes like
+`:valid` or `:invalid`.
+
+Available state classes are:
+
+- `-success`
+- `-error`
+
+See the [basic](../basic) text input chapter for examples.
 
 ### See also
 
