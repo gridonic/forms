@@ -32,7 +32,7 @@ Use the `checked` attribute to indicate whether this item is selected.
 
 ```html
 <fieldset class="form-fieldset">
-    <legend class="legend form-legend">Choose your interests</legend>
+    <legend class="legend form-legend">What do you like?</legend>
 
     <label for="coding" class="form-checkbox">
         <input id="coding" type="checkbox" class="input" name="interest" value="coding">
@@ -42,7 +42,7 @@ Use the `checked` attribute to indicate whether this item is selected.
     <br>
 
     <label for="music" class="form-checkbox">
-        <input id="music" type="checkbox" class="input" name="interest" value="music" checked>
+        <input id="music" type="checkbox" class="input" name="interest" value="music" disabled>
         <span class="form-label label">Music</span>
     </label>
 
@@ -58,6 +58,13 @@ Use the `checked` attribute to indicate whether this item is selected.
     <label for="hiking" class="form-checkbox">
         <input id="hiking" type="checkbox" class="input" name="interest" value="hiking" checked>
         <span class="form-label label">Hiking</span>
+    </label>
+
+    <br>
+
+    <label for="superforms" class="form-checkbox">
+        <input id="superforms" type="checkbox" class="input" name="interest" value="superforms" required>
+        <span class="form-label label">Superforms</span>
     </label>
 </fieldset>
 ```
@@ -78,18 +85,7 @@ Use the `checked` attribute to indicate whether this item is selected.
         top: 0;
         width: 100%;
 
-        &:disabled {
-            cursor: not-allowed;
-        }
-
-        &:focus + .label::before {
-            border-color: $forms-color-focus;
-        }
-
         &:checked + .label::before {
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 75%;
             background-image: inline-svg("#{$forms-assets-path}/tick.svg", (none: #{$forms-color-focus}));
         }
     }
@@ -99,15 +95,44 @@ Use the `checked` attribute to indicate whether this item is selected.
         display: flex;
 
         &::before {
-            background-color: $forms-color-background;
-            border: 1px solid $forms-color-border;
-            border-radius: $forms-border-radius;
+            @include state-default;
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 75%;
             content: "";
             display: block;
             height: 1.5em;
             margin-right: 0.625em;
             min-width: 1.5em;
             width: 1.5em;
+        }
+    }
+
+    > .input:hover +,
+    &.-hover > {
+        .label::before {
+            @include state-hover;
+        }
+    }
+
+    > .input:disabled +,
+    &.-disabled > {
+        .label::before {
+            @include state-disabled;
+        }
+    }
+
+    &.-error > {
+        .label::before {
+            @include state-error;
+        }
+    }
+
+    > .input:focus +,
+    &.-focus > {
+        .label::before {
+            @include state-focus;
         }
     }
 }
