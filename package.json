@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/gridonic/superforms#readme",
   "dependencies": {
-    "sass-svg-uri": "^1.0.0"
+    "sass-inline-svg-utf8": "^1.0.5"
   }
 }
