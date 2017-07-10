@@ -63,18 +63,18 @@ Represents a control that provides a menu of options.
 
 */
 .form-select {
+    @include state-default;
+
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
 
-    background-color: $forms-color-background;
-    border-radius: $forms-border-radius;
-    border: 1px solid $forms-color-border;
     color: $forms-text-color;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
     margin: 0;
+    min-width: 100%;
     outline: 0;
     padding: $forms-text-padding;
     width: 100%;
@@ -88,7 +88,6 @@ Represents a control that provides a menu of options.
     }
 
     &:focus {
-        border-color: $forms-color-focus;
         &:not([multiple]) {
             background-image: inline-svg("#{$forms-assets-path}/chevron-down.svg", (none: #{$forms-color-focus}));
         }
@@ -99,14 +98,27 @@ Represents a control that provides a menu of options.
         }
     }
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
+    &:hover,
+    &.-hover {
+        @include state-hover;
+    }
+
+    &:disabled,
+    &.-disabled {
+        @include state-disabled;
+    }
+
     &.-error {
+        @include state-error;
+
         &:not([multiple]) {
             background-image: inline-svg("#{$forms-assets-path}/chevron-down.svg", (none: #{$forms-color-error}));
         }
     }
+
+    &:focus,
+    &.-focus {
+        @include state-focus;
     }
 
     &::-ms-expand {
